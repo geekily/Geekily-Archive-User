@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.geekily.geekilyArchiveUser.mapper.SignMapper">
+
+	<select id="checkEmailExistence" parameterType="GeekilyMap" resultType="Boolean">
+		/* signMapper.checkEmailExistence */
+	    SELECT EXISTS (
+	    	SELECT 
+	    		1
+	        FROM 
+	        	USER
+	        WHERE 
+	        	EMAIL = #{email}
+		) AS FLAG_EXISTENCE
+	</select>
+	
+	<select id="checkArchiveNameExistence" parameterType="GeekilyMap" resultType="Boolean">
+		/* signMapper.checkArchiveNameExistence */
+	    SELECT EXISTS (
+	    	SELECT 
+	    		1
+	        FROM 
+	        	USER
+	        WHERE 
+	        	ARCHIVE_NAME = #{archiveName}
+		) AS FLAG_EXISTENCE
+	</select>
+	
+	<insert id="insertUser">
+		/* signMapper.insertUser */
+		INSERT INTO USER (
+			USER_UID
+			, EMAIL
+			, `PASSWORD`
+			, USER_NAME
+			, ARCHIVE_NAME
+			, REGISTRATION_DATE
+			, REGISTRATION_USER
+		) VALUES (
+			#{userUid}
+			, #{email}
+			, #{password}
+			, #{userName}
+			, #{archiveName}
+			, NOW()
+			, #{userUid}
+		)
+	</insert>
+	
+	<insert id="insertCategory" parameterType="GeekilyMap">
+		/* signMapper.insertCategory */
+		INSERT INTO CATEGORY (
+		    CATEGORY_UID
+		    <if test="parentCategoryUid != null and parentCategoryUid != ''">
+		    	, PARENT_CATEGORY_UID
+		    </if>
+		    , USER_UID
+		    , CATEGORY_NAME
+		    , URL_PATH
+		    , DEPTH
+		    , `ORDER`
+		    , REGISTRATION_DATE
+		    , REGISTRATION_USER
+		) VALUES (
+		    #{categoryUid}
+		    <if test="parentCategoryUid != null and parentCategoryUid != ''">
+		    	, #{parentCategoryUid}
+		    </if>
+		    , #{userUid}
+		    , #{categoryName}
+		    , #{urlPath}
+		    , #{depth}
+			<choose>
+				<when test="parentCategoryUid != null and parentCategoryUid != ''">
+					, (SELECT IFNULL(MAX(C.`ORDER`), 0) + 1 FROM CATEGORY C WHERE C.PARENT_CATEGORY_UID = #{parentCategoryUid})
+				</when>
+				<otherwise>
+					, (SELECT IFNULL(MAX(C.`ORDER`), 0) + 1 FROM CATEGORY C WHERE C.DEPTH = 1 AND C.USER_UID = #{userUid})
+				</otherwise>
+			</choose>
+		    , NOW()
+		    , #{userUid}
+		)
+	</insert>
+	
+	<select id="selectUser" parameterType="GeekilyMap" resultType="GeekilyMap">
+		/* signMapper.selectUser */
+		SELECT 
+			USER_UID							AS userUid
+			, PASSWORD							AS password
+			, USER_NAME							AS userName
+			, ARCHIVE_NAME 						AS archiveName
+			, GET_ARCHIVE_URL_PATH(USER_UID) 	AS myArchiveUrlPath
+		FROM
+			USER
+		WHERE
+			EMAIL 				= #{email}
+			AND FLAG_DELETED 	= 'N'
+	</select>
+</mapper>
