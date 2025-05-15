@@ -199,6 +199,16 @@ public class Util {
 	}
 	
 	/**
+	 * @name 		getUserServerUrl
+	 * @date 		2025. 5. 15.
+	 * @author		geekily
+	 * @description return user server url
+	 */
+	public static String getUserServerUrl() {
+		return PropertyUtil.getProperty("user.server.url");
+	}
+	
+	/**
 	 * @name 		getFileServerUrl
 	 * @date 		2024. 4. 4.
 	 * @author		geekily
