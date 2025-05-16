@@ -1,10 +1,17 @@
 package com.geekily.geekilyArchiveUser.configuration;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.geekily.geekilyArchiveUser.common.Constants;
 import com.geekily.geekilyArchiveUser.common.PropertyUtil;
@@ -23,6 +30,16 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Autowired
 	private LogService logService;
 	
+    @Bean
+    public LocaleResolver localeResolver() {
+        CookieLocaleResolver resolver = new CookieLocaleResolver();
+        resolver.setDefaultLocale(Locale.ENGLISH);
+        resolver.setCookieName("lang");
+        resolver.setCookieMaxAge(60 * 60 * 24 * 30); // 30 days
+        resolver.setCookiePath("/");
+        return resolver;
+    }
+    
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoginInterceptor())
@@ -47,4 +64,6 @@ public class WebMvcConfig implements WebMvcConfigurer{
 			.addResourceHandler("/upload/**")
 			.addResourceLocations("file:///" + PropertyUtil.getProperty("upload.path"));
 	}
+	
+	
 }

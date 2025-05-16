@@ -46,20 +46,20 @@
 	<div class="menu-footer d-flex jcev aic">
 		<c:choose>
 			<c:when test="${sessionScope.isSignedIn}">
-				<a href="#" onclick="goToPage('/');">Home</a>
+				<a href="#" onclick="goToPage('/');"><spring:message code="archive.menu.home"/></a>
 				<c:choose>
 					<c:when test="${isMyArchvie}">
-						<a href="#" onclick="goToPage('/admin', '_blank')">Admin page</a>
+						<a href="#" onclick="goToPage('/admin', '_blank')"><spring:message code="archive.menu.admin"/></a>
 					</c:when>
 					<c:otherwise>
-						<a href="#" onclick="goToPage('/${sessionScope.userMap.myArchiveUrlPath}')">My archive</a>
+						<a href="#" onclick="goToPage('/${sessionScope.userMap.myArchiveUrlPath}')"><spring:message code="archive.menu.myarchive"/></a>
 					</c:otherwise>
 				</c:choose>
-				<a href="#" onclick="goToPage('/sign/signout');">Sign out</a>
+				<a href="#" onclick="goToPage('/sign/signout');"><spring:message code="archive.menu.signout"/></a>
 			</c:when>
 			<c:otherwise>
-				<a href="#" onclick="goToPage('/');">Home</a>
-				<a href="#" onclick="goToPage('/sign/signin')">Sign In</a>
+				<a href="#" onclick="goToPage('/');"><spring:message code="archive.menu.home"/></a>
+				<a href="#" onclick="goToPage('/sign/signin')"><spring:message code="archive.menu.signin"/></a>
 			</c:otherwise>
 		</c:choose>
 	</div>

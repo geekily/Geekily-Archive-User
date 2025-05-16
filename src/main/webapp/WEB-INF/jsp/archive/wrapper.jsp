@@ -10,7 +10,15 @@
 	</form>
 	<div class="article-list-header-wrapper d-flex jcb">
 		<div class="d-flex aic">
-			${empty categoryName ? 'All' : categoryName} (${articleTotalCount})
+			<c:choose>
+				<c:when test="${empty categoryName}">
+					<spring:message code="archive.list.all"/>
+				</c:when>
+				<c:otherwise>
+					${categoryName}
+				</c:otherwise>
+			</c:choose>
+			&nbsp;(${articleTotalCount})
 		</div>
 		<div class="article-view-toggle-wrapper d-flex aic">
 			<i class="bi bi-grid-fill <c:if test="${empty cookie.viewType.value || cookie.viewType.value eq 'CARD'}">selected</c:if>" 	role="button" onclick="fnToggleArticleView('CARD', this);"></i>
@@ -24,7 +32,7 @@
 			</c:when>
 			<c:otherwise>
 				<div class="no-data-wrapper d-flex jcc aic">
-					No data
+					<spring:message code="archive.list.nodata"/>
 				</div>
 			</c:otherwise>
 		</c:choose>

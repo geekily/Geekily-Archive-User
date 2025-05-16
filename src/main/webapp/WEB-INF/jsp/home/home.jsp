@@ -5,10 +5,10 @@
 	<div class="section row">
 		<div class="new-article-wrapper col-lg-8">
 			<div class="section-title">
-				New Article
+				<spring:message code="home.body.newarticle"/>
 			</div>
-			 <div class="newest-article-wrapper d-flex jcs"onclick="goToPage('${newArticleList[0].articleUrlPath}')">
-				<img src="${newArticleList[0].thumbnailUrlPath}">
+			 <div class="newest-article-wrapper d-flex jcs" onclick="goToPage('${newArticleList[0].articleUrlPath}')">
+				<img src="${newArticleList[0].thumbnailUrlPath}" onerror="getErrorImageUrl(this, 'thumbnail')">
 				<div class="content-wrapper">
 					<div class="title">
 						${newArticleList[0].title}
@@ -22,8 +22,8 @@
 				</div>
 			</div>
 			<c:forEach items="${newArticleList}" var="newArticle" begin="1">
-				<div class="recent-article-wrapper d-flex aic jcs"onclick="goToPage('${newArticle.articleUrlPath}')">
-					<img src="${newArticle.thumbnailUrlPath}">
+				<div class="recent-article-wrapper d-flex aic jcs" onclick="goToPage('${newArticle.articleUrlPath}')">
+					<img src="${newArticle.thumbnailUrlPath}" onerror="getErrorImageUrl(this, 'thumbnail')">
 					<div class="content-wrapper">
 						<div class="title">
 							${newArticle.title}
@@ -38,7 +38,7 @@
 		
 		<div class="random-archvie-wrapper col-lg-4">
 			<div class="section-title">
-				Explore more archives!
+				<spring:message code="home.body.exploremorearchives"/>
 			</div>
 			
 			<div class="swiper random-archive-swiper"> 

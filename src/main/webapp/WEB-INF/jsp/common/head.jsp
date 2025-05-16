@@ -22,8 +22,21 @@
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css"/>"/>
 	
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/js/jquery/jquery-3.7.1.min.js"/>"></script>
+	<script type="text/javascript" charset="utf-8" src="<c:url value="/js/bootstrap/popper.min.js"/>"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/js/bootstrap/bootstrap.js"/>"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/js/swiper/swiper-bundle.min.js"/>"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/js/tool.js"/>"></script>
 	<script type="text/javascript" charset="utf-8" src="<c:url value="/js/sign.js"/>"></script>
+	
+	<!-- prism :: s -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-java.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-javascript.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-markup.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-properties.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+	<!-- prism :: e -->
 </head>

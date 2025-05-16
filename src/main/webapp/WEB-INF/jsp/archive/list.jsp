@@ -4,7 +4,7 @@
 
 	<!-- CARD -->
 	<div class="article article-card col-sm-3 card <c:if test="${!empty cookie.viewType.value && cookie.viewType.value eq 'LIST'}">hide</c:if>" onclick="goToPage('${article.articleUrlPath}')">
-		<img src="${article.thumbnailUrlPath}" class="card-img-top" alt="...">
+		<img src="${article.thumbnailUrlPath}" class="card-img-top" alt="..." onerror="getErrorImageUrl(this, 'thumbnail')">
 		<div class="article-card-body card-body">
 			<p class="card-text">${article.title}</p>
 		</div>
@@ -13,7 +13,7 @@
 	<!-- LIST -->
 	<div class="article article-list <c:if test="${empty cookie.viewType.value || cookie.viewType.value eq 'CARD'}">hide</c:if>" onclick="goToPage('${article.articleUrlPath}')">
 		<div class="article-list-body d-flex jcs">
-			<img src="${article.thumbnailUrlPath}" alt="...">
+			<img src="${article.thumbnailUrlPath}" alt="..." onerror="getErrorImageUrl(this, 'thumbnail')">
 			<div class="article-list-content-wrapper">
 				<div class="title">
 					${article.title}

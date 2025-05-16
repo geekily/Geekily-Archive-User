@@ -19,8 +19,8 @@
 		<c:otherwise>
 			<div class="article-view-header-wrapper"></div>
 			<div class="article-body-wrapper d-flex flex-column mb-3 jcc aic">
-				  <div class="p-2">This article has been deleted.</div>
-				  <div class="p-2">You will be redirected in <span id="second"></span> seconds.</div>	
+				  <div class="p-2"><spring:message code="archive.view.deleted01"/></div>
+				  <div class="p-2"><spring:message code="archive.view.deleted02"/></div>	
 			</div>
 			<script>
 				let $second = $('#second');
@@ -39,7 +39,11 @@
 			$('#btn-share').on('click', () => {
 				let url = window.location.href;
 				navigator.clipboard.writeText(url).then(() => {
-					openModal({type : 'alert', title : 'Clipboard', message	: 'Link copied to clipboard!'})
+					openModal({
+						type 		: 'alert'
+						, title 	: '<spring:message code="archive.view.modal.clipboard.title"/>'
+						, message	: '<spring:message code="archive.view.modal.clipboard.message"/>'
+					})
 				})
 			})
 		})

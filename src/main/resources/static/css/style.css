@@ -14,9 +14,10 @@
 
 @font-face {
 	font-family: 'basicFont';
-	src: url('./font/MALGUN.WOFF2') format('woff2');
+	src: url('./font/KoPubWorld Batang Medium.woff2') format('woff2');
 	unicode-range: U+AC00-D7AF;
 }
+
 
 html, body {
 	height: 100%;
@@ -113,7 +114,8 @@ a:active {
 	
 }
 
-.home-header-wrapper .sign-wrapper a:first-of-type {
+.home-header-wrapper .sign-wrapper > a:nth-of-type(1),
+.home-header-wrapper .sign-wrapper > a:nth-of-type(2) {
 	margin-right: 20px;
 }
 
@@ -164,7 +166,7 @@ a:active {
 }
 
 .new-article-wrapper .newest-article-wrapper .content-wrapper .content {
-	height: 57%;
+	height: 56%;
 	padding-left: 10px;
 	white-space: normal;
 	overflow: hidden;
@@ -176,7 +178,7 @@ a:active {
 }
 
 .new-article-wrapper .newest-article-wrapper .content-wrapper .date {
-	height: 21%;
+	height: 22%;
 	padding-left: 10px;
 }
 
@@ -364,13 +366,23 @@ a:active {
 }
 
 @media ( max-width : 588px){
+	.home-header-wrapper .logo-wrapper {
+		font-size: 25pt;
+	}
+	.home-header-wrapper .sign-wrapper {
+		font-size: 10pt;
+	}
+	.home-header-wrapper .sign-wrapper a:nth-of-type(1),
+	.home-header-wrapper .sign-wrapper a:nth-of-type(2) {
+		margin-right: 13px;
+	}
 	.archive-header-wrapper .menu-btn-wrapper i {
 		font-size: 2rem;
 	}
 	.archive-header-wrapper .logo-wrapper {
 		font-size: 26pt;
 	}
-		.archive-header-wrapper .search-wrapper i {
+	.archive-header-wrapper .search-wrapper i {
 		font-size: 1.6rem;
 	}
 }
@@ -481,14 +493,13 @@ a:active {
 
 .sign-body-wrapper .field-group-wrapper .forgot-password:hover {
 	color: black;
-	width: 113.93px;
 }
 
 .sign-body-wrapper .field-group-wrapper .not-registered {
 	cursor: pointer;
 	margin-top: 10px;
 	color: gray;
-	width: 121.74px;
+	width: 165px;
 }
 
 .sign-body-wrapper .field-group-wrapper .not-registered:hover {
@@ -506,7 +517,7 @@ a:active {
 
 .sign-body-wrapper .field-group-wrapper .field-wrapper #btn-save {
 	margin-left: 0px;
-	width: 74.78px;
+	width: 86px;
 }
 
 .sign-body-wrapper .field-group-wrapper .field-wrapper #btn-signin {
@@ -555,7 +566,7 @@ a:active {
 
 .article-list-header-wrapper .article-view-toggle-wrapper i:nth-of-type(2)
 	{
-	margin-top: 1.3px;
+	margin-top: 1.5px;
 	font-size: 2.1rem;
 }
 

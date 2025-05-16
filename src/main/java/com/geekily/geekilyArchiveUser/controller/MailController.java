@@ -4,6 +4,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.geekily.geekilyArchiveUser.common.Constants;
+import com.geekily.geekilyArchiveUser.common.MessageUtil;
 import com.geekily.geekilyArchiveUser.common.Util;
 import com.geekily.geekilyArchiveUser.geekilyCustom.GeekilyConnector;
 import com.geekily.geekilyArchiveUser.geekilyCustom.GeekilyMap;
@@ -41,27 +43,28 @@ public class MailController {
 				throw new Exception("Error. Server hasn't received the email address.");
 			}
 			
+			String lang 		= LocaleContextHolder.getLocale().getLanguage();
 			MimeMessage message = javaMailSender.createMimeMessage();
 			
 			switch (type) {
 			case Constants.EMAIL_PURPOSE_SIGNUP :
 				String code = Util.verificationCodeGenerator();
 				
-				GeekilyConnector gConnector = new GeekilyConnector.Builder(Util.getBaseURL(request) + "/email/code").build();
+				GeekilyConnector gConnector = new GeekilyConnector.Builder(Util.getBaseURL(request) + "/email/code?lang=" + lang).build();
 				gConnector.sendPost();
 					
 				String html = gConnector.getResponseData();
-				html = html.replace("{{message}}"	, "Thank you for registering with Geekily Archive. Please use the following code to verify your email:");
+				html = html.replace("{{message}}"	, MessageUtil.getMessage("email.signup.message"));
 				html = html.replace("{{code}}"		, code);
 				
 				MimeMessageHelper helper = new MimeMessageHelper(message, true);
 		        helper.setTo(email);
-		        helper.setSubject("Geekily Archive: Your Email Verification Code");
+		        helper.setSubject(MessageUtil.getMessage("email.signup.subject"));
 		        helper.setText(html, true);
 		        javaMailSender.send(message);
 		        
 		        gMap.put("code", code);
-		        gMap.setResultMessage("Code has been sent to your email. please check your email.");
+		        gMap.setResultMessage(MessageUtil.getMessage("email.common.code.sent"));
 				break;
 			default:
 				throw new Exception("Error. Please contact the administrator.<br/>Possible cause : Unable to determine the purpose of the email transmission.");

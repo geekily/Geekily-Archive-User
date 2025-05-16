@@ -22,6 +22,33 @@ class Signup{
 			, checkCode			: this.fnCheckCode
 			, save				: this.fnSave
 		}
+		this.message = {
+			email : {
+				fill : null
+				, format : null
+			}
+			, code : {
+				fill	: null
+				, sending : null 
+				, wrong : null
+			}
+			, password : {
+				fill : null
+				, min : null
+				, format : null
+				, match : null
+			}
+			, username : {
+				fill : null
+			}
+			, archive : {
+				fill : null
+				, min : null
+			}
+			, common : {
+				saving : null
+			}
+		}
 		this.init();
 	}
 	
@@ -40,12 +67,12 @@ class Signup{
 	async fnValidateEmail(){
 		let email = $.trim(this.obj.email.$.val());
     	if(isEmpty(email)){
-    		openModal({type : 'alert', title : 'Alert', message	: 'Fill in your email.'})
+    		openModal({type : 'alert', message : this.message.email.fill})
 			return
     	}
     	
     	if(!isEmailFormat(email)){
-			openModal({type : 'alert', title : 'Alert', message	: 'It is not the correct email format.'})
+			openModal({type : 'alert', message : this.message.email.format})
 			return
     	}
     
@@ -64,7 +91,7 @@ class Signup{
     		this.obj.btn.check.$.prop('disabled', false);
     		this.obj.email.$.on('input', () => goToPage('/'));
     	}else{
-    		openModal({type: 'alert', title: 'Alert', message : response.resultMessage});
+    		openModal({type: 'alert', message : response.resultMessage});
     		return
     	}
   		
@@ -73,14 +100,14 @@ class Signup{
 	}
 	
 	/* functoin : send code to email */
-	async fnSendCode(email){
+	fnSendCode = async (email) => {
 		let response = await $.ajax({
             type			: 'post'
             , url			: getFullPath('/email')
             , contentType	: 'application/json'
             , data			: JSON.stringify({purpose : 'signup', email : email})
-            , beforeSend	: function(){
-            	openLoading('Sending verification code...');
+            , beforeSend	: () => {
+            	openLoading(this.message.code.sending);
             }
         });
     	
@@ -91,7 +118,6 @@ class Signup{
     	
     	openModal({
 			type 		: 'alert'
-			, title		: 'Alert'
 			, message	: response.resultMessage
 			, close		: () => {
 				closeLoading();
@@ -134,11 +160,11 @@ class Signup{
 	/* function : check code */
 	fnCheckCode(){
 		if(isEmpty(this.obj.code.$.val())){
-			openModal({type : 'alert', title : 'Alert', message	: 'Fill in the verification code.'})
+			openModal({type : 'alert', message : this.message.code.fill})
 			return
 		}
 		if(this.obj.code.value != this.obj.code.$.val()){
-			openModal({type : 'alert', title : 'Alert', message	: 'Wrong verification code.'})
+			openModal({type : 'alert', message : this.message.code.wrong})
 			return
 		}
 		this.obj.code.$.prop('readonly', true);
@@ -153,37 +179,37 @@ class Signup{
 	}
     
     /* function : save */
-    async fnSave(){
+    fnSave = async () => {
     	let password 		= $.trim(this.obj.password.$.val());
     	let passwordCheck 	= $.trim(this.obj.passwordCheck.$.val());
     	let userName 		= $.trim(this.obj.userName.$.val());
     	let archiveName 	= $.trim(this.obj.archiveName.$.val());
     	if(isEmpty(password)){
-    		openModal({type : 'alert', title : 'Alert', message	: 'Fill in your password.'});
+    		openModal({type : 'alert', message : this.message.password.fill});
 	    	return
     	}
     	if(password.length < 10){
-    		openModal({type : 'alert', title : 'Alert', message	: 'Password must be at least 10 characters.'});
+    		openModal({type : 'alert', message : this.message.password.min});
 	    	return
     	}
     	if(!isPasswordFormat(password)){
-	    	openModal({type : 'alert', title : 'Alert', message	: 'Password format is incorrect.'});
+	    	openModal({type : 'alert', message : this.message.password.format});
 	    	return
     	}
 	    if(password != passwordCheck){
-	    	openModal({type : 'alert', title : 'Alert', message	: 'Password does not match.'});
+	    	openModal({type : 'alert', message : this.message.password.match});
 	    	return
 	    }
 	    if(isEmpty(userName)){
-		    openModal({type : 'alert', title : 'Alert', message	: 'Fill in your user name.'});
+		    openModal({type : 'alert', message : this.message.username.fill});
 	    	return
 	    }
 	    if(isEmpty(archiveName)){
-		    openModal({type : 'alert', title : 'Alert', message	: 'Fill in your archive name.'});
+		    openModal({type : 'alert', message : this.message.archive.fill});
 		    return
 	    }
 	    if(archiveName.length < 3){
-		    openModal({type : 'alert', title : 'Alert', message	: 'Archive name must be at least 3 characters.'});
+		    openModal({type : 'alert', message : this.message.archive.min});
 		    return
 	    }
 	    
@@ -197,7 +223,7 @@ class Signup{
         if(checkResponse.resultCode == 1){
     		this.obj.btn.save.$.prop('disabled', true);
     	}else{
-    		openModal({type: 'alert', title: 'Alert', message : checkResponse.resultMessage});
+    		openModal({type: 'alert', message : checkResponse.resultMessage});
     		return
     	}
 	    
@@ -213,14 +239,13 @@ class Signup{
             , url			: getFullPath('/sign/signup')
             , contentType	: 'application/json'
             , data			: JSON.stringify(data)
-            , beforeSend	: function(){
-            	openLoading('Saving...');
+            , beforeSend	: () => {
+            	openLoading(this.message.common.saving);
             }
         });
 	    
 	    let modalParam = {
             type 		: 'alert'
-            , title 	: 'Alert'
             , message 	: signupResponse.resultMessage
             , close 	: () => {
             	closeLoading();
@@ -247,6 +272,15 @@ class Signin{
 		this.eventHandlers = {
 			save : this.fnSave
 		}
+		this.message = {
+			email : {
+				fill : null
+				, format : null
+			}
+			, password : {
+				fill : null
+			}
+		}
 		this.init();
 	}
 	
@@ -269,17 +303,17 @@ class Signin{
     	let password 	= $.trim(this.obj.password.$.val());
     	
     	if(isEmpty(email)){
-	    	openModal({type : 'alert', title : 'Alert', message	: 'Fill in your email.'});
+	    	openModal({type : 'alert', message : this.message.email.fill});
 	    	return
     	}
     	
     	if(!isEmailFormat(email)){
-	    	openModal({type : 'alert', title : 'Alert', message	: 'It is not the correct email format.'});
+	    	openModal({type : 'alert', message : this.message.email.format});
 	    	return
     	}
     	
     	if(isEmpty(password)){
-    		openModal({type : 'alert', title : 'Alert', message	: 'Fill in your password.'});
+    		openModal({type : 'alert', message : this.message.password.fill});
 	    	return
     	}
 	    
@@ -300,7 +334,6 @@ class Signin{
     	}else{
     		openModal({
     			type		: 'alert'
-    			, title		: 'Alert'
     			, message 	: signinResponse.resultMessage
     			, close 	: () => {
     				this.obj.btn.save.$.prop('disabled', false);

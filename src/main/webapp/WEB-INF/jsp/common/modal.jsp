@@ -46,7 +46,17 @@
 	}
 	
 	function changeModalData(data){
-		$('#modalLabel').html(data.title);
+		let title;
+		if(data.title == null){
+			if(data.type == 'alert'){
+				title = '<spring:message code="modal.alert"/>';
+			}else if(data.type == 'confirm'){
+				title = '<spring:message code="modal.confirm"/>';
+			}
+		}else{
+			title = data.title;
+		}
+		$('#modalLabel').html(title);
 		$('.modal-body').html(data.message);
 		
 		if(data.type == 'alert'){

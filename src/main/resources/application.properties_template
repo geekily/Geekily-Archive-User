@@ -32,6 +32,10 @@ user.server.url=http://localhost:2222
 spring.servlet.multipart.max-file-size=20MB
 spring.servlet.multipart.max-request-size=20MB
 
+# spring message
+spring.messages.basename=messages
+spring.messages.encoding=UTF-8
+
 # spring mail
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587

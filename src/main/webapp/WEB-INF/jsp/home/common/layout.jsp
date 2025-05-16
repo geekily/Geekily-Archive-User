@@ -23,7 +23,7 @@
 				<c:out value="${pageContent}" escapeXml="false"/>
 			</div>
 
-			<jsp:include page="/WEB-INF/jsp/archive/common/footer.jsp"/>
+			<jsp:include page="/WEB-INF/jsp/home/common/footer.jsp"/>
 		</div>
 	</div>
 </body>

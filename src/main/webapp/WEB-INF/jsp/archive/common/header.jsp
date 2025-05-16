@@ -20,7 +20,7 @@
 	<div class="search-wrapper d-flex jce aic">
 		<div id="input-text-wrapper" class="input-text-wrapper d-flex jcc aic">
 			<form id="form-search" method="get">
-				<input type="text" class="form-control" name="searchValue" placeholder="Search..." maxlength="30" autocomplete="off">
+				<input type="text" class="form-control" name="searchValue" placeholder="<spring:message code="archvie.search"/>" maxlength="30" autocomplete="off">
 			</form>
 		</div>
 		<i id="btn-search" class="bi-search" role="button"></i>

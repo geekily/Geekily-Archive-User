@@ -3,7 +3,6 @@ package com.geekily.geekilyArchiveUser.controller;
 import java.util.Arrays;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geekily.geekilyArchiveUser.common.Constants;
 import com.geekily.geekilyArchiveUser.common.JwtUtil;
+import com.geekily.geekilyArchiveUser.common.MessageUtil;
 import com.geekily.geekilyArchiveUser.common.Util;
 import com.geekily.geekilyArchiveUser.geekilyCustom.GeekilyMap;
 import com.geekily.geekilyArchiveUser.mapper.service.SignService;
@@ -44,7 +44,7 @@ public class SignController {
 		try {
 			gMap.put("userUid", Util.generateUID("USR"));
 			signService.insertUser(gMap);
-			gMap.setResultMessage("Your sign-up is complete. Thank you!");
+			gMap.setResultMessage(MessageUtil.getMessage("home.signup.complete"));
 		} catch (Exception e) {
 			gMap.setResultCode(0);
 			gMap.setResultMessage(e.getMessage());
@@ -64,7 +64,7 @@ public class SignController {
 		try {
 			userMap = signService.selectUser(gMap);	
 			if(Util.isEmpty(userMap)) {
-				throw new Exception("The email or password is incorrect. Please try again.");
+				throw new Exception(MessageUtil.getMessage("home.signin.message.fail"));
 			}else {
 				/* cookie */
 				ResponseCookie cookie = jwtUtil.generateToken(userMap.getString("userUid"));
@@ -93,7 +93,7 @@ public class SignController {
 	public GeekilyMap checkEmailExistence(HttpServletRequest request, @RequestBody GeekilyMap gMap) throws Exception{
 		try {
 			if(signService.checkEmailExistence(gMap)) {
-				throw new Exception("The email has already been signed up. Please try another email.");
+				throw new Exception(MessageUtil.getMessage("home.signup.message.email.exist"));
 			}
 		} catch (Exception e) {
 			gMap.setResultCode(0);
@@ -107,10 +107,10 @@ public class SignController {
 	public GeekilyMap checkArchiveNameExistence(HttpServletRequest request, @RequestBody GeekilyMap gMap) throws Exception{
 		try {
 			if(signService.checkArchiveNameExistence(gMap)) {
-				throw new Exception("The archive name has already been signed up. Please try another archive name.");
+				throw new Exception(MessageUtil.getMessage("home.signup.message.archive.exist"));
 			}
 			if(Arrays.asList(Constants.BANNED_ARCHIVE_NAME).contains(gMap.getString("archiveName"))) {
-				throw new Exception("The archive name has already been signed up. Please try another archive name.");
+				throw new Exception(MessageUtil.getMessage("home.signup.message.archive.exist"));
 			}
 		} catch (Exception e) {
 			gMap.setResultCode(0);

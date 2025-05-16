@@ -3533,7 +3533,7 @@ textarea.form-control-lg {
 .dropdown-toggle::after {
   display: inline-block;
   margin-left: 0.255em;
-  vertical-align: 0.255em;
+  vertical-align: 0.150em;
   content: "";
   border-top: 0.3em solid;
   border-right: 0.3em solid transparent;
@@ -3548,7 +3548,7 @@ textarea.form-control-lg {
   position: absolute;
   z-index: 1000;
   display: none;
-  min-width: 10rem;
+  /* min-width: 10rem; */
   padding: 0.5rem 0;
   margin: 0;
   font-size: 1rem;
@@ -3767,11 +3767,11 @@ textarea.form-control-lg {
   color: #1e2125;
   background-color: #e9ecef;
 }
-.dropdown-item.active, .dropdown-item:active {
+/* .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
   background-color: #0d6efd;
-}
+} */
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #adb5bd;
   pointer-events: none;
