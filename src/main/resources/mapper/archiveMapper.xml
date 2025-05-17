@@ -26,6 +26,7 @@
 		WHERE 
 			REGISTRATION_USER 	= #{userUid}
 			AND URL_PATH		= #{categoryUrlPath}
+			AND FLAG_DELETED	= 'N'
 	</select>
 	
 	<select id="checkArticleExistence" parameterType="GeekilyMap" resultType="Boolean">

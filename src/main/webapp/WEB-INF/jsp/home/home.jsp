@@ -17,7 +17,7 @@
 						${newArticleList[0].content}
 					</div>
 					<div class="date d-flex aic">
-						${newArticleList[0].registrationDate}
+						${newArticleList[0].archiveLogo}<font class="middot">&middot;</font>${newArticleList[0].registrationDate}
 					</div>
 				</div>
 			</div>
@@ -28,8 +28,8 @@
 						<div class="title">
 							${newArticle.title}
 						</div>
-						<div class="date">
-							${newArticle.registrationDate}
+						<div class="date d-flex">
+							${newArticle.archiveLogo}<font class="middot">&middot;</font>${newArticle.registrationDate}
 						</div>
 					</div>
 				</div>

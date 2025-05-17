@@ -5,7 +5,7 @@
 		<input type="hidden" name="currentArchiveUserUid" 		value="${currentArchiveUserUid}">
 		<input type="hidden" name="currentCategoryUid" 			value="${currentCategoryUid}">
 		<input type="hidden" name="searchValue" 				value="${param.searchValue}">
-		<input type="hidden" name="currentPageNumber" 			value="1">
+		<input type="hidden" name="currentPageNumber" 			value="">
 		<input type="hidden" name="viewType" 					value="CARD">
 	</form>
 	<div class="article-list-header-wrapper d-flex jcb">
@@ -49,7 +49,9 @@
 		}
 
 		$(function(){
-			let isLoading = false;
+			let isLoading 			= false;
+			let $currentPageNumber 	= $('input[name="currentPageNumber"]');
+			$currentPageNumber.val(1);
 			
 			let fnPagination = function(){
 				$.ajax({
@@ -57,7 +59,6 @@
 		            , url			: getFullPath('/list')
 		            , data			: $('#form-archive').serialize()
 		            , beforeSend	: function(){
-		            	let $currentPageNumber = $('input[name="currentPageNumber"]');
 		            	$currentPageNumber.val(Number($currentPageNumber.val()) + 1);
 		            	openLoading();
 		            }

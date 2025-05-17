@@ -6,6 +6,7 @@
 		/* homeMapper.selectNewArticle */
 		SELECT
 			RSLT.ARTICLE_UID 																AS articleUid
+			, GET_ARCHIVE_LOGO(RSLT.USER_UID)												AS archiveLogo
 			, RSLT.TITLE 																	AS title
 			<![CDATA[
 			, REGEXP_REPLACE(REGEXP_REPLACE(RSLT.CONTENT, '<[^>]+>', ''), '&nbsp;', '')		AS content
@@ -21,6 +22,7 @@
 			        ORDER BY A.REGISTRATION_DATE ASC
 			  	) AS NUM
 				, A.ARTICLE_UID
+				, A.USER_UID
 				, A.TITLE
 				, A.CONTENT
 			   	, F.URL_PATH		

@@ -38,5 +38,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-markup.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-properties.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-css.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-nginx.min.js"></script>
 	<!-- prism :: e -->
 </head>
