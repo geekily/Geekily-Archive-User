@@ -8,12 +8,12 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.geekily.geekilyArchiveUser</groupId>
-	<artifactId>geekilyArchiveUser</artifactId>
+	<groupId>com.geekive.geekiveArchiveUser</groupId>
+	<artifactId>geekiveArchiveUser</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>geekilyArchiveUser</name>
-	<description>geekily archive user project</description>
+	<name>geekiveArchiveUser</name>
+	<description>geekive archive user project</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

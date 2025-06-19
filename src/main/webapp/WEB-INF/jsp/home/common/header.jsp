@@ -5,7 +5,7 @@
 <div class="home-header-wrapper container d-flex jcb">
 	<!-- logo :: s -->
 	<div class="logo-wrapper d-flex aic" onclick="goToPage('/')">
-		Geekily Archive
+		Geekive Archive
 	</div>
 	<!-- logo :: e -->
 	

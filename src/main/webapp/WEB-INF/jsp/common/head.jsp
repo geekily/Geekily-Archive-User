@@ -5,16 +5,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta property="og:url" content="https://geekily-archive.com">
-    <meta property="og:title" content="Geekily Archive">
+	<meta property="og:url" content="https://archive.geekive.com">
+    <meta property="og:title" content="Geekive Archive">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://geekily-archive.com/storage/image/common/meta_logo.png">
+    <meta property="og:image" content="https://archive.geekive.com/storage/image/common/meta_logo.png">
     <meta property="og:description" content="The simplest blog.">
     
     <link rel="icon" href="<c:url value="/image/favicon.ico"/>">
     <link rel="apple-touch-icon" href="<c:url value="/image/favicon.ico"/>">
     
-	<title>${empty currentArchiveLogo ? 'Geekily Archive Home' : currentArchiveLogo}</title>
+	<title>${empty currentArchiveLogo ? 'Geekive Archive Home' : currentArchiveLogo}</title>
 	
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrap/bootstrap.css"/>"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/css/bootstrapIcon/font/bootstrap-icons.min.css"/>"/>

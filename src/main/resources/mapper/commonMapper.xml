@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.geekily.geekilyArchiveUser.mapper.CommonMapper">
+<mapper namespace="com.geekive.geekiveArchiveUser.mapper.CommonMapper">
 
-	<select id="selectSocialMedia" resultType="GeekilyMap">
+	<select id="selectSocialMedia" resultType="geekiveMap">
 		/* commonMapper.selectSocialMedia */
 		SELECT
 			SOCIAL_MEDIA_TYPE	AS socialMediaType
@@ -16,7 +16,7 @@
 			AND USER_UID 			= #{currentArchiveUserUid}
 	</select>
 
-	<select id="selectAllCategory" resultType="GeekilyMap">
+	<select id="selectAllCategory" resultType="geekiveMap">
 		/* commonMapper.selectAllCategory */
 		WITH RECURSIVE CATEGORY_TREE AS (
 		    SELECT 

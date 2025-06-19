@@ -15,7 +15,7 @@ spring.datasource.password=yourPassword
 
 # mybatis
 mybatis.configuration.map-underscore-to-camel-case=true
-mybatis.type-aliases-package=com.geekily.geekilyArchiveUser.geekilyCustom, com.geekily.geekilyArchiveUser.vo
+mybatis.type-aliases-package=com.geekive.geekiveArchiveUser.geekiveCustom, com.geekive.geekiveArchiveUser.vo
 mybatis.mapper-locations=mapper/*.xml
 
 # admin server (local)

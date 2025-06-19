@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.geekily.geekilyArchiveUser.mapper.HomeMapper">
-	<select id="selectNewArticle" resultType="GeekilyMap">
+<mapper namespace="com.geekive.geekiveArchiveUser.mapper.HomeMapper">
+	<select id="selectNewArticle" resultType="geekiveMap">
 		/* homeMapper.selectNewArticle */
 		SELECT
 			RSLT.ARTICLE_UID 																AS articleUid
@@ -43,7 +43,7 @@
 		LIMIT 5
 	</select>
 	
-	<select id="selectRandomArchive" resultType="GeekilyMap">
+	<select id="selectRandomArchive" resultType="geekiveMap">
 		/* homeMapper.selectRandomArchive */
 		SELECT
 			U.USER_UID									AS userUid

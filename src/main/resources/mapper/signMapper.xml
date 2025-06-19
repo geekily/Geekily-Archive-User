@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.geekily.geekilyArchiveUser.mapper.SignMapper">
+<mapper namespace="com.geekive.geekiveArchiveUser.mapper.SignMapper">
 
-	<select id="checkEmailExistence" parameterType="GeekilyMap" resultType="Boolean">
+	<select id="checkEmailExistence" parameterType="geekiveMap" resultType="Boolean">
 		/* signMapper.checkEmailExistence */
 	    SELECT EXISTS (
 	    	SELECT 
@@ -15,7 +15,7 @@
 		) AS FLAG_EXISTENCE
 	</select>
 	
-	<select id="checkArchiveNameExistence" parameterType="GeekilyMap" resultType="Boolean">
+	<select id="checkArchiveNameExistence" parameterType="geekiveMap" resultType="Boolean">
 		/* signMapper.checkArchiveNameExistence */
 	    SELECT EXISTS (
 	    	SELECT 
@@ -48,7 +48,7 @@
 		)
 	</insert>
 	
-	<insert id="insertCategory" parameterType="GeekilyMap">
+	<insert id="insertCategory" parameterType="geekiveMap">
 		/* signMapper.insertCategory */
 		INSERT INTO CATEGORY (
 		    CATEGORY_UID
@@ -84,7 +84,7 @@
 		)
 	</insert>
 	
-	<select id="selectUser" parameterType="GeekilyMap" resultType="GeekilyMap">
+	<select id="selectUser" parameterType="geekiveMap" resultType="geekiveMap">
 		/* signMapper.selectUser */
 		SELECT 
 			USER_UID							AS userUid

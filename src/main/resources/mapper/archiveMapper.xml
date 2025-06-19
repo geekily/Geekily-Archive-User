@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.geekily.geekilyArchiveUser.mapper.ArchiveMapper">
-	<select id="selectUserUid" parameterType="GeekilyMap" resultType="String">
+<mapper namespace="com.geekive.geekiveArchiveUser.mapper.ArchiveMapper">
+	<select id="selectUserUid" parameterType="geekiveMap" resultType="String">
 		/* archiveMapper.selectUserUid */
 		SELECT USER_UID FROM USER WHERE ARCHIVE_NAME = CONVERT_DASH_TO_SPACE(#{archiveName})
 	</select>
 
-	<select id="selectArchiveLogo" parameterType="GeekilyMap" resultType="String">
+	<select id="selectArchiveLogo" parameterType="geekiveMap" resultType="String">
 		/* archiveMapper.selectArchiveLogo */
 		SELECT GET_ARCHIVE_LOGO(#{userUid})
 	</select>
 	
-	<select id="selectArchiveUrlPath" parameterType="GeekilyMap" resultType="String">
+	<select id="selectArchiveUrlPath" parameterType="geekiveMap" resultType="String">
 		/* archiveMapper.selectArchiveUrlPath */
 		SELECT GET_ARCHIVE_URL_PATH(#{userUid})
 	</select>
 
-	<select id="selectCategoryUid" parameterType="GeekilyMap" resultType="String">
+	<select id="selectCategoryUid" parameterType="geekiveMap" resultType="String">
 		/* archiveMapper.selectCategoryUid */
 		SELECT 
 			CATEGORY_UID 
@@ -29,7 +29,7 @@
 			AND FLAG_DELETED	= 'N'
 	</select>
 	
-	<select id="checkArticleExistence" parameterType="GeekilyMap" resultType="Boolean">
+	<select id="checkArticleExistence" parameterType="geekiveMap" resultType="Boolean">
 		/* archiveMapper.checkArticleExistence */
 		SELECT EXISTS (
 			SELECT
@@ -50,12 +50,12 @@
 		) AS FLAG_EXISTENCE
 	</select>
 	
-	<select id="selectCategoryName" parameterType="GeekilyMap" resultType="String">
+	<select id="selectCategoryName" parameterType="geekiveMap" resultType="String">
 		/* archiveMapper.selectCategoryName */
 		SELECT CATEGORY_NAME FROM `CATEGORY` WHERE CATEGORY_UID = #{currentCategoryUid}
 	</select>
 	
-	<select id="selectArticleUid" parameterType="GeekilyMap" resultType="String">
+	<select id="selectArticleUid" parameterType="geekiveMap" resultType="String">
 		/* archiveMapper.selectArticleUid */
 		SELECT
 			RSLT.ARTICLE_UID AS articleUid
@@ -136,7 +136,7 @@
 			) RSLT2
 	</select>
 
-	<select id="selectArticleList" resultType="GeekilyMap">
+	<select id="selectArticleList" resultType="geekiveMap">
 		/* archiveMapper.selectArticleList */
 		SELECT
 			RSLT2.*
@@ -201,7 +201,7 @@
 		LIMIT #{dataCountPerPage}
 	</select>
 	
-	<select id="selectArticle" resultType="GeekilyMap">
+	<select id="selectArticle" resultType="geekiveMap">
 		/* archiveMapper.selectArticle */
 		SELECT
 			RSLT.*

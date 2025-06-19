@@ -105,7 +105,7 @@ a:active {
 .home-header-wrapper .logo-wrapper {
 	font-size: 30pt;
 	user-select: none;
-	width: 267.25px;
+	width: 270.25px;
 	cursor: pointer;
 }
 
@@ -422,8 +422,8 @@ a:active {
 
 @media ( max-width : 483px) {
 	.home-header-wrapper .logo-wrapper {
-		font-size: 20pt;
-		width: 200px;
+		font-size: 18pt;
+		width: 182px;
 	}
 	.home-header-wrapper .sign-wrapper {
 		font-size: 9pt;
