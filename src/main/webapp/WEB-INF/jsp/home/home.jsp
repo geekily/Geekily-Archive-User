@@ -72,7 +72,6 @@
 		
 		</div>
 	</div>
-
 	<script>
 		const swiper = new Swiper(".random-archive-swiper", {
 			  direction: 'vertical',
