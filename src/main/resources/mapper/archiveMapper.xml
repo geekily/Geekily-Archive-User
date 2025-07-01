@@ -198,6 +198,8 @@
 			) RSLT2
 		WHERE 
 			PAGING_INDEX <![CDATA[>]]> ${dataPagingIndex}
+		ORDER BY
+			PAGING_INDEX ASC	
 		LIMIT #{dataCountPerPage}
 	</select>
 	
